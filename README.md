@@ -28,4 +28,13 @@ npm run tauri dev
 ```
 
 ## Troubleshooting
-If you see `program not found: cargo`, it means the Rust toolchain is not in your PATH. Please ensure Rust is installed and your shell is restarted.
+
+### `NASM command not found`
+By default, some Rust crypto libraries require NASM. I have configured `russh` to use the `ring` backend to avoid this dependency. If you still encounter this error, ensure you have a C compiler installed (like MSVC on Windows or GCC on Linux) or install [NASM](https://www.nasm.us/).
+
+### `glib-2.0 not found` (Linux)
+If building on Linux, ensure you have the GTK3 and GLib development headers installed:
+- Ubuntu/Debian: `sudo apt install libgtk-3-dev libsoup-3.0-dev libwebkit2gtk-4.1-dev build-essential curl wget libssl-dev libayatana-appindicator3-dev librsvg2-dev`
+
+### `program not found: cargo`
+Ensure the Rust toolchain is in your system PATH. After installing Rust, you may need to restart your terminal or run `source $HOME/.cargo/env`.
